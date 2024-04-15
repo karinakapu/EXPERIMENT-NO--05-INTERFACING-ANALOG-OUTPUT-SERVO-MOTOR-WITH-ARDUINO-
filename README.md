@@ -1,8 +1,8 @@
-###  DATE: 
+###  DATE: 15/4/24
 
-###  NAME: 
-###  ROLL NO :
-###  DEPARTMENT: 
+###  NAME: naresh
+###  ROLL NO :212221080012
+###  DEPARTMENT: mechanical engineering
 
 
 # EXPERIMENT NO 05 INTERFACING ANALOG OUTPUT SERVO MOTOR WITH ARDUINO
@@ -28,6 +28,8 @@ Servo motors are used for angular positioning, such as in radio control airplane
 
 
 ![image](https://user-images.githubusercontent.com/36288975/163544439-1f477927-fcd4-42f0-9ce4-c863fdbf1210.png)
+![Screenshot 2024-04-15 143139](https://github.com/vasanthkumarch/EXPERIMENT-NO--05-INTERFACING-ANALOG-OUTPUT-SERVO-MOTOR-WITH-ARDUINO-/assets/167073142/49d7604f-a4e3-4df9-bd14-879ee2ba50eb)
+
 
 
 
@@ -58,6 +60,8 @@ CIRCUIT DIAGRAM
  
  
  ![image](https://user-images.githubusercontent.com/36288975/163544618-6eb8a7b5-7f1a-428a-8d9f-fd899b145efb.png)
+ ![Screenshot 2024-04-15 143201](https://github.com/vasanthkumarch/EXPERIMENT-NO--05-INTERFACING-ANALOG-OUTPUT-SERVO-MOTOR-WITH-ARDUINO-/assets/167073142/3467d5f4-0982-4c38-987c-e5395bd6f7b4)
+
 
 ### FIGURE 04 CIRCUIT DIAGRAM
 
@@ -74,6 +78,52 @@ CIRCUIT DIAGRAM
 
 
 ### PROGRAM :
+```
+#include<Servo.h>
+Servo s1;
+int po=0;
+int red=9;
+int green=8;
+void setup()
+{
+  s1.attach(6);
+  Serial.begin(9600);
+  pinMode(red,OUTPUT);
+  pinMode(green,OUTPUT);
+}
+void loop()
+{
+  for(po=0;po<=180;po+=5)
+  {
+    s1.write(po);
+    delay(200);
+    Serial.println(po);
+  
+}
+for(po=180;po>=0;po-=5)
+{
+  s1.write(po);
+    delay(200);
+    Serial.println(po);
+}  
+  
+  if(po>=120)
+    {
+      digitalWrite(red,HIGH);
+      delay(200);
+      digitalWrite(red,LOW);
+      delay(200);
+  }
+  else
+  {
+      digitalWrite(green,HIGH);
+      delay(200);
+      digitalWrite(green,LOW);
+      delay(200);
+  }
+
+}
+```
  
 
 
